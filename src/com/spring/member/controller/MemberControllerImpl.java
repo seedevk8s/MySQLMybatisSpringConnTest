@@ -5,6 +5,10 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.multiaction.MultiActionController;
 
@@ -12,14 +16,20 @@ import com.spring.member.service.MemberService;
 import com.spring.member.service.MemberServiceImpl;
 import com.spring.member.vo.MemberVO;
 
+@Controller("memberController")
 public class MemberControllerImpl extends MultiActionController implements MemberController {
+	@Autowired
 	private MemberService memberService;
 
+	@Autowired
+	MemberVO memberVO ;	
+	
 	public void setMemberService(MemberServiceImpl memberService) {
 		this.memberService = memberService;
 	}
 	
 	@Override
+	@RequestMapping(value="/member/listMembers.do" ,method = RequestMethod.GET)
 	public ModelAndView listMembers(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String viewName = getViewName(request);
 		List membersList = memberService.listMembers();

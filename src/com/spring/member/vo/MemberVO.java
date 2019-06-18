@@ -1,5 +1,8 @@
 package com.spring.member.vo;
 
+import org.springframework.stereotype.Component;
+
+@Component("memberVO")
 public class MemberVO {
 	private String MNO;
 	private String MNAME;

@@ -20,7 +20,11 @@
       <property name="suffix" value=".jsp"/>
    </bean>
    
-   <bean id="memberController" 
+  <bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping"/>
+  <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter"/>
+  <context:component-scan base-package="com.spring"/> 
+   
+<!--     <bean id="memberController" 
                             class="com.spring.member.controller.MemberControllerImpl">
       <property name="methodNameResolver">
          <ref local="memberMethodResolver"/>
@@ -48,6 +52,6 @@
             <prop key="/member/*.do">memberController</prop>
          </props>
       </property>
-   </bean>
+   </bean>  -->
    
 </beans>
